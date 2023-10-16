@@ -5,7 +5,7 @@ const router = Router();
 
 
 router.post('/', addCowQuarantine)
-router.delete('/', deleteCowQuarantine),
+router.delete('/:id', deleteCowQuarantine),
 router.get('/', getAllQuarantineCows);
 
 

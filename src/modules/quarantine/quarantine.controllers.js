@@ -38,7 +38,8 @@ const addCowQuarantine = async (req, res) => {
 const deleteCowQuarantine = async (req, res) => {
     try {
         const cowTo = req.body
-        const foundCow = await quarantineCows.findByPk(cowTo.id);
+        const id = req.params.id
+        const foundCow = await quarantineCows.findByPk(id);
         if(!foundCow){
             res.status(404).json({message: 'no se encontró el registro'})
         }
