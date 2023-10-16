@@ -44,6 +44,39 @@ app.get('/cows', async (req, res) => {
         console.log(error)
     }
 });
+
+app.put('/cows/:id', async (req, res) => {
+
+    try {
+        const id = req.params.id;
+        const updatedData = req.body;
+
+        const cow = await cows.findByPk(id);
+
+        if (!cow) {
+            return res.status(404).json({ error: 'La vaca no se encontró' });
+        }
+
+        if (updatedData.temp) {
+            cow.temp = updatedData.temp;
+        }
+        if (updatedData.fr) {
+            cow.fr = updatedData.fr;
+        }
+        if (updatedData.fs) {
+            cow.fs = updatedData.fs;
+        }
+
+        await cow.save();
+
+        res.json(cow);
+    } catch (error) {
+
+        res.status(500).json({ error: 'Error al actualizar el registro' });
+        console.log(error);
+    }
+});
+
 app.post('/users', async (req, res) => {
     try {
         const user = req.body;
