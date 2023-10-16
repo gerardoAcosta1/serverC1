@@ -26,13 +26,11 @@ app.get('/', (req, res) => {
 app.post('/cows', async (req, res) => {
     try {
         const newCow = req.body;
-
-
         const createdCow = await cows.create(newCow);
         res.json(createdCow);
     } catch (error) {
-        res.status(500).json({ error: 'Error al registrar la vaca' });
-        console.log(error)
+       // res.status(500).json({ error: 'Error al registrar la vaca' });
+        res.json(error)
     }
 });
 app.get('/cows', async (req, res) => {
@@ -84,7 +82,7 @@ app.put('/cows/:id', async (req, res) => {
     } catch (error) {
 
         res.status(500).json({ error: 'Error al actualizar el registro' });
-        console.log(error);
+        
     }
 });
 
