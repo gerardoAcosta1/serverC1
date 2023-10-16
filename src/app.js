@@ -28,6 +28,7 @@ app.post('/cows', async (req, res) => {
         const newCow = req.body;
         const createdCow = await cows.create(newCow);
         res.json(createdCow);
+        
     } catch (error) {
        // res.status(500).json({ error: 'Error al registrar la vaca' });
         res.json(error)
@@ -42,7 +43,26 @@ app.get('/cows', async (req, res) => {
         console.log(error)
     }
 });
+app.delete('/cows/:id', async (req, res) => {
 
+    try {
+
+        const id = req.params.id;
+
+        const cow = await cows.findByPk(id);
+
+        if (!cow) {
+            return res.status(404).json({ error: 'no se encuentra ese registro' });
+        }
+
+        await cow.destroy();
+
+        res.json({ message: 'registro eliminado exitosamente' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener las vacas' });
+      
+    }
+});
 app.put('/cows/:id', async (req, res) => {
 
     try {
