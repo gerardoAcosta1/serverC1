@@ -20,4 +20,4 @@ const users = db.define('users', {
     tableName: 'users', 
     timestamps: false, 
 });
-export default users;
+export {users};

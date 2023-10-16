@@ -1,24 +1,24 @@
 import { DataTypes } from "sequelize";
 import db from "../utils/dataBase.js";
 
-const cows = db.define('cows', {
+const quarantineCows = db.define('quarantine-cows', {
 
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        
     },
     peso: {
         type: DataTypes.INTEGER,
-        allowNull: false
+       
     },
     musculo: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        
     },
     marmoleo: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        
     },
     temp: {
         type: DataTypes.INTEGER,
@@ -33,8 +33,8 @@ const cows = db.define('cows', {
         type: DataTypes.INTEGER,
     },
 }, {
-    tableName: 'cows', // Nombre de la tabla en la base de datos
-    timestamps: false, // Si no deseas tener campos createdAt y updatedAt
+    tableName: 'quarantine-cows', 
+    timestamps: false,
 });
 
-export {cows};
+export {quarantineCows};
