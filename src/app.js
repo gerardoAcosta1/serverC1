@@ -56,9 +56,20 @@ app.put('/cows/:id', async (req, res) => {
         if (!cow) {
             return res.status(404).json({ error: 'La vaca no se encontró' });
         }
-
+        if (updatedData.peso) {
+            cow.peso = updatedData.peso;
+        }
+        if (updatedData.musculo) {
+            cow.musculo = updatedData.musculo;
+        }
+        if (updatedData.marmoleo) {
+            cow.marmoleo = updatedData.marmoleo;
+        }
         if (updatedData.temp) {
             cow.temp = updatedData.temp;
+        }
+        if (updatedData.fr) {
+            cow.fc = updatedData.fc;
         }
         if (updatedData.fr) {
             cow.fr = updatedData.fr;
